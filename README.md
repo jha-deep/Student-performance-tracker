@@ -58,20 +58,7 @@ A beginner-friendly full-stack web application to manage students, exam marks, a
 
 Change the demo password and Flask secret key before deploying this application publicly.
 
-## GitHub upload
 
-Create a new empty repository on GitHub, then run these commands from this folder:
-
-```bash
-git init
-git add .
-git commit -m "Initial commit: Student Performance Tracker"
-git branch -M main
-git remote add origin https://github.com/YOUR-USERNAME/student-performance-tracker.git
-git push -u origin main
-```
-
-Replace `YOUR-USERNAME` with your GitHub username.
 
 ## Project structure
 
