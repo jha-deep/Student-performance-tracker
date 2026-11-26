@@ -21,44 +21,7 @@ A beginner-friendly full-stack web application to manage students, exam marks, a
 - SQLite
 - HTML, CSS
 - Chart.js
-
-## Run locally
-
-1. Install Python 3.10 or newer.
-2. Download or clone this repository.
-3. Open a terminal in the project folder.
-4. Create and activate a virtual environment:
-
-   **Windows**
-   ```bash
-   py -m venv venv
-   venv\Scripts\activate
-   ```
-
-   **macOS / Linux**
-   ```bash
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-
-5. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
-6. Start the app:
-   ```bash
-   python app.py
-   ```
-7. Open http://127.0.0.1:5000 in your browser.
-
-## Demo credentials
-
-- Username: `admin`
-- Password: `admin123`
-
-Change the demo password and Flask secret key before deploying this application publicly.
-
-
+   
 
 ## Project structure
 
