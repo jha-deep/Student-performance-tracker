@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Student Performance Tracker{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+{% if session.get('user_id') %}
+<aside class="sidebar">
+  <div class="brand">📘 StudentTrack</div>
+  <div class="nav-label">MENU</div>
+  <a href="{{ url_for('dashboard') }}">▦ Dashboard</a>
+  <a href="{{ url_for('students') }}">♙ Students</a>
+  <a href="{{ url_for('marks') }}">▤ Marks</a>
+  <a href="{{ url_for('attendance') }}">✓ Attendance</a>
+  <a href="{{ url_for('reports') }}">▥ Reports</a>
+  <div class="sidebar-bottom"><span>Signed in as {{ session.get('username') }}</span><a href="{{ url_for('logout') }}">↪ Logout</a></div>
+</aside>
+{% endif %}
+<main class="{% if session.get('user_id') %}main-content{% else %}auth-main{% endif %}">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}{% for category,message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}{% endif %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

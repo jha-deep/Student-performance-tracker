@@ -1,0 +1,7 @@
+{% extends "base.html" %}{% block title %}Students | StudentTrack{% endblock %}{% block content %}
+<div class="topbar"><div><p class="eyebrow">MANAGEMENT</p><h1>Students</h1><p class="muted">Manage your student records.</p></div><a class="btn primary" href="{{ url_for('student_form') }}">＋ Add Student</a></div>
+<form class="searchbar" method="get"><input name="q" value="{{ q }}" placeholder="Search by name, roll number or class"><button class="btn secondary">Search</button></form>
+<section class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Name</th><th>Roll No.</th><th>Email</th><th>Class</th><th>Average</th><th>Actions</th></tr></thead><tbody>
+{% for s in students %}<tr><td><b>{{ s.name }}</b></td><td>{{ s.roll_no }}</td><td>{{ s.email or '—' }}</td><td>{{ s.class_name }}</td><td>{{ s.percentage }}%</td><td class="actions"><a href="{{ url_for('student_detail',student_id=s.id) }}">View</a><a href="{{ url_for('student_form',student_id=s.id) }}">Edit</a><form method="post" action="{{ url_for('delete_student',student_id=s.id) }}" onsubmit="return confirm('Delete this student and all related records?')"><button class="link danger-text">Delete</button></form></td></tr>
+{% else %}<tr><td colspan="6" class="empty">No students found.</td></tr>{% endfor %}
+</tbody></table></div></section>{% endblock %}

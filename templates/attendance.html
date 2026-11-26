@@ -1,0 +1,10 @@
+{% extends "base.html" %}{% block title %}Attendance | StudentTrack{% endblock %}{% block content %}
+<div class="topbar"><div><p class="eyebrow">STUDENT RECORDS</p><h1>Attendance</h1><p class="muted">Record daily attendance. Saving again for the same date updates the status.</p></div></div>
+<section class="panel"><h2>Mark attendance</h2><form method="post" class="form-grid">
+<div><label>Student *</label><select name="student_id" required><option value="">Select student</option>{% for s in students %}<option value="{{ s.id }}">{{ s.roll_no }} — {{ s.name }}</option>{% endfor %}</select></div>
+<div><label>Date *</label><input type="date" name="attendance_date" value="{{ today }}" required></div>
+<div><label>Status *</label><select name="status"><option>Present</option><option>Absent</option></select></div>
+<div class="form-actions"><button class="btn primary">Save attendance</button></div></form></section>
+<section class="panel table-panel"><div class="panel-head"><h2>Recent attendance</h2></div><div class="table-wrap"><table><thead><tr><th>Student</th><th>Roll No.</th><th>Date</th><th>Status</th></tr></thead><tbody>
+{% for a in records %}<tr><td>{{ a.name }}</td><td>{{ a.roll_no }}</td><td>{{ a.attendance_date }}</td><td><span class="status {{ 'good' if a.status=='Present' else 'bad' }}">{{ a.status }}</span></td></tr>{% else %}<tr><td colspan="4" class="empty">No attendance records yet.</td></tr>{% endfor %}
+</tbody></table></div></section>{% endblock %}

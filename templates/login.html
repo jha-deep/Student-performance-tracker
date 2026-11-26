@@ -1,0 +1,12 @@
+{% extends "base.html" %}{% block title %}Login | StudentTrack{% endblock %}
+{% block content %}
+<div class="login-card">
+  <div class="login-icon">📘</div><h1>Welcome back</h1><p class="muted">Sign in to manage student performance</p>
+  <form method="post">
+    <label>Username</label><input name="username" placeholder="Enter username" required>
+    <label>Password</label><input name="password" type="password" placeholder="Enter password" required>
+    <button class="btn primary full">Sign in</button>
+  </form>
+  <div class="demo"><b>Demo login</b><br>Username: admin<br>Password: admin123</div>
+</div>
+{% endblock %}

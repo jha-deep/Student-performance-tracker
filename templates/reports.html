@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Reports | StudentTrack{% endblock %}{% block content %}
+<div class="topbar"><div><p class="eyebrow">ANALYTICS</p><h1>Performance Reports</h1><p class="muted">Student-wise academic summary based on recorded assessments.</p></div><button class="btn secondary" onclick="window.print()">Print report</button></div>
+<section class="panel table-panel"><div class="table-wrap"><table><thead><tr><th>Rank</th><th>Student</th><th>Roll No.</th><th>Class</th><th>Assessments</th><th>Average</th><th>Grade</th></tr></thead><tbody>
+{% for s in students %}<tr><td>{{ loop.index }}</td><td><b>{{ s.name }}</b></td><td>{{ s.roll_no }}</td><td>{{ s.class_name }}</td><td>{{ s.exams }}</td><td>{{ s.percentage }}%</td><td><span class="status {{ 'good' if s.percentage>=60 else 'bad' }}">{{ grade(s.percentage) }}</span></td></tr>{% else %}<tr><td colspan="7" class="empty">No report data available.</td></tr>{% endfor %}
+</tbody></table></div></section><p class="muted note">Grades: A+ ≥ 90%, A ≥ 80%, B ≥ 70%, C ≥ 60%, D ≥ 50%, Needs Improvement below 50%.</p>{% endblock %}
